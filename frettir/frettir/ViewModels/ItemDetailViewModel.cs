@@ -6,10 +6,10 @@ namespace frettir.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public Post Item { get; set; }
+        public ItemDetailViewModel(Post item = null)
         {
-            Title = item?.Text;
+            Title = item?.Title;
             Item = item;
         }
     }

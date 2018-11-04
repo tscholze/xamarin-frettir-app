@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="frettir.Views.SettingsPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" VerticalOptions="Center">
+            <Label Text="Please enter a new Wordpress feed url to add it to your list." FontSize="Default" />
+            <Entry x:Name="UrlEntry" Placeholder="Enter new feed url" />
+            <Button Text="Add Feed" Command="{Binding AddNewFeedCommand}" CommandParameter="{Binding Source={x:Reference UrlEntry}, Path=Text}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

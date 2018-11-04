@@ -49,9 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="WordPressPCL">
-      <Version>1.5.0</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
@@ -96,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\frettir\frettir.csproj">
-      <Project>{95C2AC8A-2A7E-4816-91A2-D75ED3251B40}</Project>
+      <Project>{49B5DB86-59D6-4445-A853-F77F975641FB}</Project>
       <Name>frettir</Name>
     </ProjectReference>
   </ItemGroup>

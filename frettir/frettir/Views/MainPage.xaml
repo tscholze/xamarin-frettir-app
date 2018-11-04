@@ -5,7 +5,7 @@
             x:Class="frettir.Views.MainPage">
     <TabbedPage.Children>
            
-        <NavigationPage Title="About">
+        <NavigationPage Title="Settings">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_about.png"/>

@@ -12,24 +12,27 @@ namespace frettir.ViewModels
 
         public SettingsViewModel()
         {
-           // Title = "Settings";
-
             AddNewFeedCommand = new Command<string>(AddNewFeed);
         }
 
         void AddNewFeed(string urlString)
         {
-            if (!UriHelper.IsValidUrl(urlString))
+            // Check for valid url
+            if (!UriHelper.IsValidUrl(urlString) == true)
             {
+                MessagingCenter.Send<SettingsViewModel>(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED);
                 return;
             }
 
-            var posts = WordpressService.GetPosts(urlString);
-
-            foreach (var p in posts)
+            // Check if blog feed has posts
+            if (WordpressService.GetPosts(urlString).Count == 0)
             {
-                Console.WriteLine(p.Title);
+                MessagingCenter.Send<SettingsViewModel>(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED);
+                return;
             }
+
+            // Process valid blog feed
+            MessagingCenter.Send<SettingsViewModel>(this, Constants.NOTIFICATION_ID_ADDFEED_SUCCESS);
         }
     }
 }

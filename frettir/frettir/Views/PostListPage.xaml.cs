@@ -9,12 +9,17 @@ namespace frettir.Views
     {
         PostListViewModel viewModel;
 
+        public PostListPage()
+        {
+            // Required for XAML previewer
+            InitializeComponent();
+        }
+
         public PostListPage(PostListViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
-            Debug.Text = viewModel.urlString;
         }
     }
 }

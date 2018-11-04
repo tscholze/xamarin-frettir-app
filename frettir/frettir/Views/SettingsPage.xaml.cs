@@ -17,16 +17,10 @@ namespace frettir.Views
             BindingContext = viewModel = new SettingsViewModel();
 
             // Handle messages
-            MessagingCenter.Subscribe<SettingsViewModel>(this, Constants.NOTIFICATION_ID_ADDFEED_SUCCESS, OnSuccess);
             MessagingCenter.Subscribe<SettingsViewModel>(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED, OnFailed);
 
             // Dev helper
             UrlEntry.Text = "https://dbudwm.wordpress.com/feed";
-        }
-
-        void OnSuccess(SettingsViewModel obj)
-        {
-            DisplayAlert("Success", "Adding of the feed succeeded.", "OK");
         }
 
         void OnFailed(SettingsViewModel obj)

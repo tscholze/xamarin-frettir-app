@@ -32,7 +32,6 @@ namespace frettir.ViewModels
             }
 
             // Process valid blog feed
-            MessagingCenter.Send<SettingsViewModel>(this, Constants.NOTIFICATION_ID_ADDFEED_SUCCESS);
             MessagingCenter.Send<SettingsViewModel, string>(this, Constants.NOTIFICATION_ID_ADDTABITEM, urlString);
         }
     }

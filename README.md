@@ -2,7 +2,12 @@
 `A customizeable Wordpress Feed Reader writting as a Beginner project with Microsoft Xamarin`
 
 ## Status
-[![Build Status](https://tscholze.visualstudio.com/Frettir/_apis/build/status/Frettir-Xamarin.Android-CI)](https://tscholze.visualstudio.com/Frettir/_build/latest?definitionId=2)
+
+|Platform | Status|
+|---|---|
+|iOS| [![Build Status iOS](https://tscholze.visualstudio.com/Frettir/_apis/build/status/Frettir-Xamarin.iOS-CI)](https://tscholze.visualstudio.com/Frettir/_build/latest?definitionId=3)|
+|Android|[![Build Status Android](https://tscholze.visualstudio.com/Frettir/_apis/build/status/Frettir-Xamarin.Android-CI)](https://tscholze.visualstudio.com/Frettir/_build/latest?definitionId=2)|
+
 
 ## Idea behind
 It is never to late to learn something new. 

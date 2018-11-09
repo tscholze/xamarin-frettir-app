@@ -20,6 +20,7 @@ namespace frettir.Views
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
+            viewModel.LoadFeedCommand.Execute(null);
         }
     }
 }

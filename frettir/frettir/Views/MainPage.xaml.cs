@@ -12,22 +12,33 @@ namespace frettir.Views
         {
             InitializeComponent();
 
+            AddStoredPostListPages();
+
             MessagingCenter.Subscribe<SettingsViewModel, string>(this, Constants.NOTIFICATION_ID_ADDTABITEM, OnAddItemMessage);
         }
 
-        private void OnAddItemMessage(SettingsViewModel sender, string urlString)
+        void AddStoredPostListPages()
         {
-            // Build new navigation page
+            AddFeedPostPage("https://dbudwm.wordpress.com/feed");
+            SelectedItem = Children[0];
+        }
+
+        void OnAddItemMessage(SettingsViewModel sender, string urlString)
+        {
+            AddFeedPostPage(urlString);
+            SelectedItem = Children[0];
+        }
+
+        void AddFeedPostPage(string urlString)
+        {
             var viewModel = new PostListViewModel(urlString);
             var navigationPage = new NavigationPage(new PostListPage(viewModel))
             {
-                Title = "Test",
+                Title = "Saved",
                 Icon = "tab_about.png"
             };
 
-            // Add and select page as first in row
             Children.Insert(0, navigationPage);
-            SelectedItem = Children[0];
         }
     }
 }

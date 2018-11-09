@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using frettir.Models;
 using frettir.ViewModels;
 using Xamarin.Forms;
 
@@ -21,6 +22,12 @@ namespace frettir.Views
 
             BindingContext = this.viewModel = viewModel;
             viewModel.LoadFeedCommand.Execute(null);
+        }
+
+        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selectedPost = e.Item as Post;
+            viewModel.OpenPostUrlCommand.Execute(selectedPost);
         }
     }
 }

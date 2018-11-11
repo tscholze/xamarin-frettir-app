@@ -8,38 +8,69 @@ using Xamarin.Essentials;
 
 namespace frettir.ViewModels
 {
-    public class PostListViewModel: BaseViewModel
+    public class PostListViewModel : BaseViewModel
     {
+        #region Members 
+
         public string Title
         {
-            get { return "Title"; }
+            get 
+            {
+                if (_feed == null)
+                    return "Feed";
+
+                return _feed.Title;
+            }
         }
 
-        public List<Post> Posts { get; private set; }
+        public List<Post> Posts 
+        {
+            get
+            {
+                if (_feed == null)
+                    return new List<Post>();
+
+                return _feed.Posts;
+            }
+        }
 
         public ICommand LoadFeedCommand { get; private set; }
 
         public ICommand OpenPostUrlCommand { get; private set; }
 
-        private string _urlString;
+        Feed _feed;
 
-        public PostListViewModel(string urlString)
+        readonly string _feedUrlString;
+
+        #endregion
+
+        #region Init
+
+        public PostListViewModel(string feedUrlString)
         {
-            _urlString = urlString;
+            _feedUrlString = feedUrlString;
             LoadFeedCommand = new Command(LoadFeedAsync);
             OpenPostUrlCommand = new Command<Post>(OpenPostUrlAsync);
         }
 
-        private void LoadFeedAsync()
+        #endregion
+
+        #region Private helper
+
+        void LoadFeedAsync()
         {
-            Posts = WordpressService.GetPosts(_urlString);
+
+            _feed = WordpressService.GetPosts(_feedUrlString);
+            OnPropertyChanged("Title");
             OnPropertyChanged("Posts");
         }
 
-        private async void OpenPostUrlAsync(Post post)
+        async void OpenPostUrlAsync(Post post)
         {
             var uri = new Uri(post.Link);
             await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
+
+        #endregion
     }
 }

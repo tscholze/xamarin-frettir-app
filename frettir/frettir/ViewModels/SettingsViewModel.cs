@@ -3,6 +3,7 @@ using System.Windows.Input;
 using frettir.Utils;
 using frettir.Services;
 using Xamarin.Forms;
+using frettir.Models;
 
 namespace frettir.ViewModels
 {
@@ -20,19 +21,20 @@ namespace frettir.ViewModels
             // Check for valid url
             if (!UriHelper.IsValidUrl(urlString) == true)
             {
-                MessagingCenter.Send<SettingsViewModel>(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED);
+                MessagingCenter.Send(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED);
                 return;
             }
 
             // Check if blog feed has posts
-            if (WordpressService.GetPosts(urlString).Count == 0)
+            var feed = WordpressService.GetPosts(urlString);
+            if (feed.Posts.Count == 0)
             {
-                MessagingCenter.Send<SettingsViewModel>(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED);
+                MessagingCenter.Send(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED);
                 return;
             }
 
             // Process valid blog feed
-            MessagingCenter.Send<SettingsViewModel, string>(this, Constants.NOTIFICATION_ID_ADDTABITEM, urlString);
+            MessagingCenter.Send(this, Constants.NOTIFICATION_ID_ADDTABITEM, feed);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using frettir.Models;
 using frettir.Utils;
 using frettir.ViewModels;
 using Xamarin.Forms;
@@ -13,30 +14,44 @@ namespace frettir.Views
             InitializeComponent();
 
             AddStoredPostListPages();
+            AddStoredPostListPages();
+            AddStoredPostListPages();
+            AddStoredPostListPages();
+            AddStoredPostListPages();
+            AddStoredPostListPages();
 
-            MessagingCenter.Subscribe<SettingsViewModel, string>(this, Constants.NOTIFICATION_ID_ADDTABITEM, OnAddItemMessage);
+            MessagingCenter.Subscribe<SettingsViewModel, Feed>(this, Constants.NOTIFICATION_ID_ADDTABITEM, OnAddItemMessage);
         }
 
         void AddStoredPostListPages()
         {
-            AddFeedPostPage("https://dbudwm.wordpress.com/feed");
+
+            var feed = new Feed
+            {
+                Title = "Der Bayer und der Würschtlmann"
+            };
+            AddFeedPostPage(feed);
             SelectedItem = Children[0];
         }
 
-        void OnAddItemMessage(SettingsViewModel sender, string urlString)
+        void OnAddItemMessage(SettingsViewModel sender, Feed feed)
         {
-            AddFeedPostPage(urlString);
+            AddFeedPostPage(feed);
             SelectedItem = Children[0];
         }
 
-        void AddFeedPostPage(string urlString)
+        void AddFeedPostPage(Feed feed)
         {
-            var viewModel = new PostListViewModel(urlString);
+            var viewModel = new PostListViewModel("https://dbudwm.wordpress.com/feed");
             var navigationPage = new NavigationPage(new PostListPage(viewModel))
             {
-                Title = "Saved",
-                Icon = "tab_about.png"
+                Title = feed.Title.Substring(0, 15),
             };
+
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+                navigationPage.Icon = "tab_about.png";
+            }
 
             Children.Insert(0, navigationPage);
         }

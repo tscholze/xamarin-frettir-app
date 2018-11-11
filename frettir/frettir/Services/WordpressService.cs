@@ -10,13 +10,15 @@ namespace frettir.Services
 {
     public static class WordpressService
     {
-        public static List<Post> GetPosts(string urlString)
+        public static Feed GetPosts(string urlString)
         {
             var client = new WebClient();
             var rssString = client.DownloadString(urlString);
 
             XDocument doc = XDocument.Parse(rssString);
-            var list = (from item in doc.Element("rss").Element("channel").Elements("item")
+            XElement channel = doc.Element("rss").Element("channel");
+
+            var list = (from item in channel.Elements("item")
                         select new Post
                         {
                             Title = item.Element("title").Value,
@@ -25,7 +27,11 @@ namespace frettir.Services
                             Guid = item.Element("guid").Value
                         }).ToList();
 
-            return list;
+            var feed = new Feed();
+            feed.Title = channel.Element("title").Value;
+            feed.Posts = list;
+
+            return feed;
         }
     }
 }

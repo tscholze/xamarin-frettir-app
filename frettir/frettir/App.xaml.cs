@@ -8,14 +8,17 @@ namespace frettir
 {
     public partial class App : Application
     {
-
+        #region Init
         public App()
         {
             InitializeComponent();
 
-
             MainPage = new MainPage();
         }
+
+        #endregion
+
+        #region Event handler
 
         protected override void OnStart()
         {
@@ -31,5 +34,7 @@ namespace frettir
         {
             // Handle when your app resumes
         }
+
+        #endregion
     }
 }

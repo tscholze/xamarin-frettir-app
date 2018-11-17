@@ -9,12 +9,22 @@ namespace frettir.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
+        #region Properties
+
         public ICommand AddNewFeedCommand { get; }
+
+        #endregion
+
+        #region Init
 
         public SettingsViewModel()
         {
             AddNewFeedCommand = new Command<string>(AddNewFeed);
         }
+
+        #endregion
+
+        #region Private helper
 
         void AddNewFeed(string urlString)
         {
@@ -36,5 +46,7 @@ namespace frettir.ViewModels
             // Process valid blog feed
             MessagingCenter.Send(this, Constants.NOTIFICATION_ID_ADDTABITEM, feed);
         }
+
+        #endregion
     }
 }

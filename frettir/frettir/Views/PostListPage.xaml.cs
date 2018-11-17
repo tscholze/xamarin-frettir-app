@@ -8,7 +8,13 @@ namespace frettir.Views
 {
     public partial class PostListPage : ContentPage
     {
+        #region Properties
+
         PostListViewModel viewModel;
+
+        #endregion
+
+        #region Init
 
         public PostListPage()
         {
@@ -24,10 +30,16 @@ namespace frettir.Views
             viewModel.LoadFeedCommand.Execute(null);
         }
 
+        #endregion
+
+        #region Event handler
+
         void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedPost = e.Item as Post;
             viewModel.OpenPostUrlCommand.Execute(selectedPost);
         }
+
+        #endregion
     }
 }

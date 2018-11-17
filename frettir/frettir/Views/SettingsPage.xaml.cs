@@ -8,8 +8,13 @@ namespace frettir.Views
 {
     public partial class SettingsPage : ContentPage
     {
-        private SettingsViewModel viewModel;
+        #region Properties
 
+        SettingsViewModel viewModel;
+
+        #endregion
+
+        #region Init
         public SettingsPage()
         {
             // Setup page
@@ -23,9 +28,15 @@ namespace frettir.Views
             UrlEntry.Text = "https://dbudwm.wordpress.com/feed";
         }
 
+        #endregion
+
+        #region Event handler
+
         void OnFailed(SettingsViewModel obj)
         {
             DisplayAlert("Error", "Adding of the feed failed.", "OK");
         }
+
+        #endregion
     }
 }

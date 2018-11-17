@@ -9,33 +9,40 @@ namespace frettir.Views
 {
     public partial class MainPage : TabbedPage
     {
+        #region Init
+
         public MainPage()
         {
             InitializeComponent();
 
-            AddStoredPostListPages();
-            AddStoredPostListPages();
-            AddStoredPostListPages();
-            AddStoredPostListPages();
-            AddStoredPostListPages();
+            // Add stored feed pages
             AddStoredPostListPages();
 
+            // Subscribe to messaging center
             MessagingCenter.Subscribe<SettingsViewModel, Feed>(this, Constants.NOTIFICATION_ID_ADDTABITEM, OnAddItemMessage);
         }
 
-        void AddStoredPostListPages()
-        {
+        #endregion
 
-            var feed = new Feed
-            {
-                Title = "Der Bayer und der Würschtlmann"
-            };
+        #region Event handler
+
+        void OnAddItemMessage(SettingsViewModel sender, Feed feed)
+        {
             AddFeedPostPage(feed);
             SelectedItem = Children[0];
         }
 
-        void OnAddItemMessage(SettingsViewModel sender, Feed feed)
+        #endregion
+
+        #region Private helper
+
+        void AddStoredPostListPages()
         {
+            // Create for each stored feed a new page
+            var feed = new Feed
+            {
+                Title = "Der Bayer und der Würschtlmann"
+            };
             AddFeedPostPage(feed);
             SelectedItem = Children[0];
         }
@@ -48,12 +55,14 @@ namespace frettir.Views
                 Title = feed.Title.Substring(0, 15),
             };
 
-            if(Device.RuntimePlatform == Device.iOS)
+            if (Device.RuntimePlatform == Device.iOS)
             {
                 navigationPage.Icon = "tab_about.png";
             }
 
             Children.Insert(0, navigationPage);
         }
+
+        #endregion
     }
 }

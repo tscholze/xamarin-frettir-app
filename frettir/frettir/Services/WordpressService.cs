@@ -10,6 +10,11 @@ namespace frettir.Services
 {
     public static class WordpressService
     {
+        /// <summary>
+        /// Gets the url's feed posts.
+        /// </summary>
+        /// <returns>The feed's posts.</returns>
+        /// <param name="urlString">URL string.</param>
         public static Feed GetPosts(string urlString)
         {
             var client = new WebClient();

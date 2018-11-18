@@ -21,8 +21,9 @@ namespace frettir.Services
             var rssString = client.DownloadString(urlString);
 
             XDocument doc = XDocument.Parse(rssString);
-            XElement channel = doc.Element("rss").Element("channel");
 
+            // Parse list of posts.
+            XElement channel = doc.Element("rss").Element("channel");
             var list = (from item in channel.Elements("item")
                         select new Post
                         {
@@ -32,9 +33,13 @@ namespace frettir.Services
                             Guid = item.Element("guid").Value
                         }).ToList();
 
-            var feed = new Feed();
-            feed.Title = channel.Element("title").Value;
-            feed.Posts = list;
+            // Create wrapping feed object.
+            var feed = new Feed
+            {
+                Title = channel.Element("title").Value,
+                FeedUri = urlString,
+                Posts = list
+            };
 
             return feed;
         }

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using frettir.Models;
+﻿using frettir.Models;
+using frettir.Services;
 using frettir.Utils;
 using frettir.ViewModels;
 using Xamarin.Forms;
@@ -28,7 +27,7 @@ namespace frettir.Views
 
         void OnAddItemMessage(SettingsViewModel sender, Feed feed)
         {
-            AddFeedPostPage(feed);
+            AddFeedPostListPage(feed);
             SelectedItem = Children[0];
         }
 
@@ -36,23 +35,26 @@ namespace frettir.Views
 
         #region Private helper
 
+        /// <summary>
+        /// Addsin-app stored feed post list pages.
+        /// </summary>
         void AddStoredPostListPages()
         {
-            // Create for each stored feed a new page
-            var feed = new Feed
+            foreach(var feed in FeedPreferenceService.GetFeeds())
             {
-                Title = "Der Bayer und der Würschtlmann"
-            };
-            AddFeedPostPage(feed);
-            SelectedItem = Children[0];
+                AddFeedPostListPage(feed);
+            }
         }
 
-        void AddFeedPostPage(Feed feed)
+        /// <summary>
+        /// Adds a new feed post list page.
+        /// </summary>
+        /// <param name="feed">Feed.</param>
+        void AddFeedPostListPage(Feed feed)
         {
-            var viewModel = new PostListViewModel("https://dbudwm.wordpress.com/feed");
-            var navigationPage = new NavigationPage(new PostListPage(viewModel))
+            var navigationPage = new NavigationPage(new PostListPage(new PostListViewModel(feed)))
             {
-                Title = feed.Title.Substring(0, 15),
+                Title = feed.ShortendTitle,
             };
 
             if (Device.RuntimePlatform == Device.iOS)

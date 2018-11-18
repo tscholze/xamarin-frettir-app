@@ -4,6 +4,8 @@ using frettir.Utils;
 using frettir.Services;
 using Xamarin.Forms;
 using frettir.Models;
+using Xamarin.Essentials;
+using Newtonsoft.Json;
 
 namespace frettir.ViewModels
 {
@@ -26,6 +28,10 @@ namespace frettir.ViewModels
 
         #region Private helper
 
+        /// <summary>
+        /// Adds the new feed.
+        /// </summary>
+        /// <param name="urlString">URL string.</param>
         void AddNewFeed(string urlString)
         {
             // Check for valid url
@@ -42,6 +48,9 @@ namespace frettir.ViewModels
                 MessagingCenter.Send(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED);
                 return;
             }
+
+            // Store to preferences
+            FeedPreferenceService.AddFeed(feed);
 
             // Process valid blog feed
             MessagingCenter.Send(this, Constants.NOTIFICATION_ID_ADDTABITEM, feed);

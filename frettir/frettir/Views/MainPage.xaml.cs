@@ -3,6 +3,7 @@ using frettir.Services;
 using frettir.Utils;
 using frettir.ViewModels;
 using Xamarin.Forms;
+using XF.Material.Forms.UI;
 
 namespace frettir.Views
 {
@@ -52,9 +53,9 @@ namespace frettir.Views
         /// <param name="feed">Feed.</param>
         void AddFeedPostListPage(Feed feed)
         {
-            var navigationPage = new NavigationPage(new PostListPage(new PostListViewModel(feed)))
+            var navigationPage = new MaterialNavigationPage(new PostListPage(new PostListViewModel(feed)))
             {
-                Title = feed.ShortendTitle,
+                Title = feed.ShortendTitle
             };
 
             if (Device.RuntimePlatform == Device.iOS)

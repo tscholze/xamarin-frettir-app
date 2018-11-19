@@ -1,21 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="frettir.Views.PostListPage" Title="{Binding Title}">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
+    x:Class="frettir.Views.PostListPage"
+    Title="{Binding Title}">
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding Posts}" SeparatorVisibility="None" HasUnevenRows="true" BackgroundColor="#F2F2F2" SelectionMode="None" ItemTapped="Handle_ItemTapped">
+        <ListView
+            ItemsSource="{Binding Posts}"
+            SeparatorVisibility="None"
+            HasUnevenRows="true"
+            BackgroundColor="#F2F2F2"
+            SelectionMode="None"
+            ItemTapped="Handle_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame BorderColor="Gray" CornerRadius="5" HasShadow="false" Margin="20, 10, 10, 20">
+                        <material:MaterialCard
+                            CornerRadius="2"
+                            Elevation="1"
+                            HeightRequest="150"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="10">
                             <StackLayout>
-                                <Label FontSize="24" Text="{Binding Title}" HeightRequest="60" />
-                                <StackLayout Orientation="Horizontal" Spacing="15" HeightRequest="150">
-                                    <Image Aspect="AspectFill" 
-                                           Source="https://dbudwm.files.wordpress.com/2018/03/bildschirmfoto-2018-03-26-um-20-34-43.png" WidthRequest="150" VerticalOptions="StartAndExpand" />
-                                    <Label Margin="0" BackgroundColor="Fuchsia" FontSize="14" Text="Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+                                <Label
+                                    Style="{DynamicResource  Material.TypeScale.H6}"
+                                    Text="{Binding Title}"
+                                    HeightRequest="50" />
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Spacing="15"
+                                    HeightRequest="150">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        Source="https://dbudwm.files.wordpress.com/2018/03/bildschirmfoto-2018-03-26-um-20-34-43.png"
+                                        WidthRequest="150"
+                                        VerticalOptions="StartAndExpand" />
+                                    <Label
+                                        Style="{DynamicResource  Material.TypeScale.Body1}"
+                                        Text="Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
                                 </StackLayout>
-                                <Label FontSize="10" Text="John Doe - 25.08.2018" />
+                                <BoxView
+                                    HeightRequest="1"
+                                    Color="#ededed" />
+                                <Label
+                                    Style="{DynamicResource  Material.TypeScale.Caption}"
+                                    HorizontalTextAlignment="End"
+                                    Text="John Doe - 25.08.2018" />
                             </StackLayout>
-                        </Frame>
+                        </material:MaterialCard>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

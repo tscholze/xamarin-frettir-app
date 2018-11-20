@@ -3,27 +3,22 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:frettir.Views"
-    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms" 
+    xmlns:controls="clr-namespace:frettir.Controls"
     x:Class="frettir.Views.MainPage">
     <TabbedPage.Children>
-        <material:MaterialNavigationPage
+        <controls:FRNavigationPage
             Title="Settings">
-            <material:MaterialNavigationPage.ToolbarItems>
-                <ToolbarItem Text="Settings" 
-                             Icon="icon-settings.png" />
-            </material:MaterialNavigationPage.ToolbarItems>
-            
-            <material:MaterialNavigationPage.Icon>
+            <controls:FRNavigationPage.Icon>
                 <OnPlatform
                     x:TypeArguments="FileImageSource">
                     <On
                         Platform="iOS"
                         Value="tab_about.png" />
                 </OnPlatform>
-            </material:MaterialNavigationPage.Icon>
+            </controls:FRNavigationPage.Icon>
             <x:Arguments>
                 <views:SettingsPage />
             </x:Arguments>
-        </material:MaterialNavigationPage>
+        </controls:FRNavigationPage>
     </TabbedPage.Children>
 </TabbedPage>

@@ -124,10 +124,9 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <ImageAsset Include="Assets.xcassets\icon-settings.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon-settings.imageset\settings-outline.png" />
-    <ImageAsset Include="Assets.xcassets\icon-settings.imageset\settings-outline-2.png" />
-    <ImageAsset Include="Assets.xcassets\icon-settings.imageset\settings-outline-3.png" />
+    <BundleResource Include="Resources\icon_settings%403x.png" />
+    <BundleResource Include="Resources\icon_settings%402x.png" />
+    <BundleResource Include="Resources\icon_settings.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -149,6 +148,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets.xcassets\icon-settings.imageset\" />
+    <Folder Include="Assets.xcassets\icon_settings.imageset\" />
   </ItemGroup>
 </Project>

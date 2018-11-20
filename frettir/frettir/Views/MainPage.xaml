@@ -8,6 +8,11 @@
     <TabbedPage.Children>
         <material:MaterialNavigationPage
             Title="Settings">
+            <material:MaterialNavigationPage.ToolbarItems>
+                <ToolbarItem Text="Settings" 
+                             Icon="icon-settings.png" />
+            </material:MaterialNavigationPage.ToolbarItems>
+            
             <material:MaterialNavigationPage.Icon>
                 <OnPlatform
                     x:TypeArguments="FileImageSource">

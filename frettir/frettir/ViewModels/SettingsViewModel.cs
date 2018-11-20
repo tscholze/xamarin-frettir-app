@@ -1,11 +1,7 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using frettir.Utils;
 using frettir.Services;
 using Xamarin.Forms;
-using frettir.Models;
-using Xamarin.Essentials;
-using Newtonsoft.Json;
 
 namespace frettir.ViewModels
 {

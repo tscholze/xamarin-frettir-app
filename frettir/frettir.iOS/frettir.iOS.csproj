@@ -124,6 +124,10 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\icon-settings.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon-settings.imageset\settings-outline.png" />
+    <ImageAsset Include="Assets.xcassets\icon-settings.imageset\settings-outline-2.png" />
+    <ImageAsset Include="Assets.xcassets\icon-settings.imageset\settings-outline-3.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -143,5 +147,8 @@
       <Project>{49B5DB86-59D6-4445-A853-F77F975641FB}</Project>
       <Name>frettir</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\icon-settings.imageset\" />
   </ItemGroup>
 </Project>

@@ -5,21 +5,41 @@
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
     x:Class="frettir.Views.SettingsPage">
     <ContentPage.Content>
-        <StackLayout
-            Padding="20"
-            VerticalOptions="Center">
-            <Label
-                Text="Please enter a new Wordpress feed url to add it to your list."
-                Style="{DynamicResource  Material.TypeScale.Body1}" />
-            <material:MaterialTextField
-                x:Name="UrlEntry"
-                Placeholder="Enter new feed url"
-                BackgroundColor="Transparent"
-                AlwaysShowUnderline="true" />
-            <material:MaterialButton
-                Text="Add Feed"
-                Command="{Binding AddNewFeedCommand}"
-                CommandParameter="{Binding Source={x:Reference UrlEntry}, Path=Text}" />
+        <StackLayout>
+            <material:MaterialCard
+                CornerRadius="2"
+                Elevation="1"
+                HorizontalOptions="FillAndExpand"
+                Margin="10">
+                <StackLayout>
+                    <Label
+                        Text="Add feed"
+                        Style="{DynamicResource  Material.TypeScale.H6}" />
+                    <material:MaterialTextField
+                        x:Name="UrlEntry"
+                        Placeholder="Feed url"
+                        HelperText="E.g.: https://example.org/feed"
+                        BackgroundColor="Transparent"
+                        AlwaysShowUnderline="true" />
+                    <material:MaterialButton
+                        Text="Add"
+                        Command="{Binding AddNewFeedCommand}"
+                        CommandParameter="{Binding Source={x:Reference UrlEntry}, Path=Text}" />
+                </StackLayout>
+            </material:MaterialCard>
+            <material:MaterialCard
+                CornerRadius="2"
+                Elevation="1"
+                HorizontalOptions="FillAndExpand"
+                Margin="10">
+                <StackLayout>
+                    <Label
+                        Text="Clear list"
+                        Style="{DynamicResource  Material.TypeScale.H6}" />
+                    <material:MaterialButton
+                        Text="Remove all feeds" BackgroundColor="Red" />
+                </StackLayout>
+            </material:MaterialCard>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -9,11 +9,14 @@ namespace frettir
     public partial class App : Application
     {
         #region Init
+
         public App()
         {
             InitializeComponent();
 
-            XF.Material.Forms.Material.Init(this);
+            XF.Material.Forms.Material.Init(this, "Material.Configuration");
+            XF.Material.Forms.Material.PlatformConfiguration.ChangeStatusBarColor(Color.Red);
+
             MainPage = new MainPage();
         }
 

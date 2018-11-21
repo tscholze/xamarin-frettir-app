@@ -1,4 +1,5 @@
-﻿using frettir.Models;
+﻿using frettir.Controls;
+using frettir.Models;
 using frettir.Services;
 using frettir.Utils;
 using frettir.ViewModels;
@@ -16,35 +17,90 @@ namespace frettir.Views
             InitializeComponent();
 
             // Add stored feed pages
-            AddStoredPostListPages();
+            CreateChildren();
 
             // Subscribe to messaging center
-            MessagingCenter.Subscribe<SettingsViewModel, Feed>(this, Constants.NOTIFICATION_ID_ADDTABITEM, OnAddItemMessage);
+            MessagingCenter.Subscribe<SettingsViewModel, Feed>(this, Constants.NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED, OnAddItemMessageRequested);
+            MessagingCenter.Subscribe<SettingsViewModel>(this, Constants.NOTIFICATION_ID_FEED_ITEM_UPDATED, OnFeedUpdatedRequested);
+            MessagingCenter.Subscribe<FRNavigationPage>(this, Constants.NOTIFICATION_ID_SHOW_SETTINGS_PAGE, OnShowSettingsPageRequested);
         }
 
         #endregion
 
         #region Event handler
 
-        void OnAddItemMessage(SettingsViewModel sender, Feed feed)
+        /// <summary>
+        /// Called on a feed item was added succesful.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="feed">Feed.</param>
+        void OnAddItemMessageRequested(SettingsViewModel sender, Feed feed)
         {
             AddFeedPostListPage(feed);
             SelectedItem = Children[0];
         }
+
+        /// <summary>
+        /// Called on if at least one feed got updated.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        void OnFeedUpdatedRequested(SettingsViewModel sender)
+        {
+            CreateChildren();
+        }
+
+        /// <summary>
+        /// Shows the settings page.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        void OnShowSettingsPageRequested(FRNavigationPage sender)
+        {
+            Navigation.PushModalAsync(new SettingsPage());
+        }
+
 
         #endregion
 
         #region Private helper
 
         /// <summary>
-        /// Addsin-app stored feed post list pages.
+        /// Adds in-app stored feed post list pages.
         /// </summary>
-        void AddStoredPostListPages()
+        void CreateChildren()
         {
-            foreach(var feed in FeedPreferenceService.GetFeeds())
+            Children.Clear();
+
+            var feeds = FeedPreferenceService.GetFeeds();
+
+            if (feeds.Count == 0)
             {
-                AddFeedPostListPage(feed);
+                AddEmptyPage();
             }
+            else
+            {
+                foreach (var feed in feeds)
+                {
+                    AddFeedPostListPage(feed);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds the empty feed list page.
+        /// </summary>
+        void AddEmptyPage()
+        {
+            var navigationPage = new MaterialNavigationPage(new EmptyPage())
+            {
+                Title = "Help"
+            };
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                navigationPage.Icon = "tab_about.png";
+            }
+
+            Children.Insert(0, navigationPage);
         }
 
         /// <summary>
@@ -53,7 +109,7 @@ namespace frettir.Views
         /// <param name="feed">Feed.</param>
         void AddFeedPostListPage(Feed feed)
         {
-            var navigationPage = new MaterialNavigationPage(new PostListPage(new PostListViewModel(feed)))
+            var navigationPage = new FRNavigationPage(new PostListPage(new PostListViewModel(feed)))
             {
                 Title = feed.ShortendTitle
             };

@@ -2,6 +2,7 @@
 using frettir.Utils;
 using frettir.Services;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace frettir.ViewModels
 {
@@ -11,6 +12,12 @@ namespace frettir.ViewModels
 
         public ICommand AddNewFeedCommand { get; }
 
+        public ICommand GoToRepositoryCommand { get; }
+
+        public ICommand RemoveAllFeedsCommand { get; }
+
+        public ICommand ClosePageCommand { get; }
+
         #endregion
 
         #region Init
@@ -18,6 +25,8 @@ namespace frettir.ViewModels
         public SettingsViewModel()
         {
             AddNewFeedCommand = new Command<string>(AddNewFeed);
+            GoToRepositoryCommand = new Command(GoToRepository);
+            ClosePageCommand = new Command(ClosePage);
         }
 
         #endregion
@@ -33,7 +42,7 @@ namespace frettir.ViewModels
             // Check for valid url
             if (!UriHelper.IsValidUrl(urlString) == true)
             {
-                MessagingCenter.Send(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED);
+                MessagingCenter.Send(this, Constants.NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED);
                 return;
             }
 
@@ -41,7 +50,7 @@ namespace frettir.ViewModels
             var feed = WordpressService.GetPosts(urlString);
             if (feed.Posts.Count == 0)
             {
-                MessagingCenter.Send(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED);
+                MessagingCenter.Send(this, Constants.NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED);
                 return;
             }
 
@@ -49,7 +58,35 @@ namespace frettir.ViewModels
             FeedPreferenceService.AddFeed(feed);
 
             // Process valid blog feed
-            MessagingCenter.Send(this, Constants.NOTIFICATION_ID_ADDTABITEM, feed);
+            MessagingCenter.Send(this, Constants.NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED, feed);
+        }
+
+        /// <summary>
+        /// Jumps to the respository's webpage.
+        /// </summary>
+        async void GoToRepository()
+        {
+            await Browser.OpenAsync(Constants.URI_REPOSITORY, BrowserLaunchMode.SystemPreferred);
+        }
+
+        /// <summary>
+        /// Triggeres the removing of all stored feeds.
+        /// </summary>
+        void RemoveAllFeeds()
+        {
+            // Remove all feeds from storage.
+            FeedPreferenceService.RemoveAll();
+
+            // Raise notifications that feed(s) has been updated aka. removed.
+            MessagingCenter.Send(this, Constants.NOTIFICATION_ID_FEED_ITEM_UPDATED);
+        }
+
+        /// <summary>
+        /// Closes the modal.
+        /// </summary>
+        void ClosePage()
+        {
+            Application.Current.MainPage.Navigation.PopModalAsync();
         }
 
         #endregion

@@ -19,10 +19,11 @@ namespace frettir.Views
         {
             // Setup page
             InitializeComponent();
+            Title = "Settings";
             BindingContext = viewModel = new SettingsViewModel();
 
             // Handle messages
-            MessagingCenter.Subscribe<SettingsViewModel>(this, Constants.NOTIFICATION_ID_ADDFEED_FAILED, OnFailed);
+            MessagingCenter.Subscribe<SettingsViewModel>(this, Constants.NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED, OnFailed);
 
             // Dev helper
             UrlEntry.Text = "https://dbudwm.wordpress.com/feed";

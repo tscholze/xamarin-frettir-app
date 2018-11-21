@@ -3,9 +3,17 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
-    x:Class="frettir.Views.SettingsPage">
+    x:Class="frettir.Views.SettingsPage"
+    Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            Padding="0, 80, 0, 0"
+            BackgroundColor="White">
+            <material:MaterialButton
+                ButtonType="Text"
+                Text="Close"
+                Command="{Binding ClosePageCommand}"
+                HorizontalOptions="End" />
             <material:MaterialCard
                 CornerRadius="2"
                 Elevation="1"
@@ -34,10 +42,13 @@
                 Margin="10">
                 <StackLayout>
                     <Label
-                        Text="Clear list"
+                        Text="Other Actions"
                         Style="{DynamicResource  Material.TypeScale.H6}" />
                     <material:MaterialButton
-                        Text="Remove all feeds" BackgroundColor="Red" />
+                        Text="Go to Github" />
+                    <material:MaterialButton
+                        Text="Remove all feeds"
+                        BackgroundColor="Red" />
                 </StackLayout>
             </material:MaterialCard>
         </StackLayout>

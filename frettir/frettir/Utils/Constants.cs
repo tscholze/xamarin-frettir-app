@@ -5,21 +5,34 @@ namespace frettir.Utils
     {
         #region Min / Max Values
 
+        /// <summary>
+        /// Max length of a shortend feed title.
+        /// </summary>
         public static int SHORTEND_FEED_TITLE_LENGTH = 10;
 
-#endregion
+        #endregion
 
         #region Notification keys
 
         /// <summary>
-        /// The notification identifier for `addfeed failed`.
+        /// The notification identifier for adding a new feed item failed.
         /// </summary>
-        public static string NOTIFICATION_ID_ADDFEED_FAILED = "NOTIFICATION_ID_ADDFEED_FAILED";
+        public static string NOTIFICATION_ID_FEED_ITEM_ADD_FAILED = "NOTIFICATION_ID_FEED_ITEM_ADD_FAILED";
 
         /// <summary>
-        /// The notification identifier `addtabitem.
+        /// The notification identifier for adding a new feed item was succeeded.
         /// </summary>
-        public static string NOTIFICATION_ID_ADDTABITEM = "NOTIFICATION_ID_ADDTABITEM";
+        public static string NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED = "NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED";
+
+        /// <summary>
+        /// The notification identifier that a feed item got updated.
+        /// </summary>
+        public static string NOTIFICATION_ID_FEED_ITEM_UPDATED = "NOTIFICATION_ID_FEED_ITEM_UPDATED";
+
+        /// <summary>
+        /// The notification identifier that the settings page should be displayed.
+        /// </summary>
+        public static string NOTIFICATION_ID_SHOW_SETTINGS_PAGE = "NOTIFICATION_ID_SHOW_SETTINGS_PAGE";
 
         #endregion
 
@@ -34,6 +47,15 @@ namespace frettir.Utils
         /// Preference list seperator.
         /// </summary>
         public static string[] PREFERENCE_LIST_SEPERATOR = { "-----------" };
+
+        #endregion
+
+        #region Misc.
+
+        /// <summary>
+        /// URI to the code repository of the app.
+        /// </summary>
+        public static Uri URI_REPOSITORY = new Uri("https://google.de");
 
         #endregion
     }

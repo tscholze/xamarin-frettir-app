@@ -6,19 +6,6 @@
     xmlns:controls="clr-namespace:frettir.Controls"
     x:Class="frettir.Views.MainPage">
     <TabbedPage.Children>
-        <controls:FRNavigationPage
-            Title="Settings">
-            <controls:FRNavigationPage.Icon>
-                <OnPlatform
-                    x:TypeArguments="FileImageSource">
-                    <On
-                        Platform="iOS"
-                        Value="tab_about.png" />
-                </OnPlatform>
-            </controls:FRNavigationPage.Icon>
-            <x:Arguments>
-                <views:SettingsPage />
-            </x:Arguments>
-        </controls:FRNavigationPage>
+      
     </TabbedPage.Children>
 </TabbedPage>

@@ -1,6 +1,8 @@
 ﻿using System;
 using XF.Material.Forms.UI;
 using Xamarin.Forms;
+using System.Windows.Input;
+using frettir.Utils;
 
 namespace frettir.Controls
 {
@@ -9,10 +11,21 @@ namespace frettir.Controls
     /// </summary>
     public class FRNavigationPage : MaterialNavigationPage
     {
+        #region Private properties
+
+        /// <summary>
+        /// Gets the show settings page command.
+        /// </summary>
+        /// <value>The show settings page command.</value>
+        ICommand ShowSettingsPageCommand { get; }
+
+        #endregion
+
         #region Init 
 
         public FRNavigationPage(Page rootPage) : base(rootPage)
         {
+            ShowSettingsPageCommand = new Command(ShowSettingsPage);
             SetupToolbarItems();
         }
 
@@ -27,10 +40,19 @@ namespace frettir.Controls
         {
             var settings = new ToolbarItem
             {
-                Icon = "icon_settings.png"
+                Icon = "icon_settings.png",
+                Command = ShowSettingsPageCommand
             };
 
             ToolbarItems.Add(settings);
+        }
+
+        /// <summary>
+        /// Requests to show the settings page.
+        /// </summary>
+        void ShowSettingsPage()
+        {
+            MessagingCenter.Send(this, Constants.NOTIFICATION_ID_SHOW_SETTINGS_PAGE);
         }
 
         #endregion

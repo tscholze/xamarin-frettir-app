@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="frettir.Views.EmptyPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="*" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="1"
+                Style="{DynamicResource  Material.TypeScale.Body1}"
+                HorizontalTextAlignment="Center"
+                Text="You did not add any feed yet, tap on the cog and get started!" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

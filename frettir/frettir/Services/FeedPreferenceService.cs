@@ -41,6 +41,14 @@ namespace frettir.Services
             return feeds;
         }
 
+        /// <summary>
+        /// Removes all stored feeds.
+        /// </summary>
+        public static void RemoveAll()
+        {
+            Preferences.Remove(Constants.PREFERENCE_NAME_FILE_FEED);
+        }
+
         #endregion
 
         #region Private helper

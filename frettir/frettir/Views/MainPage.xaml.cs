@@ -22,7 +22,7 @@ namespace frettir.Views
             // Subscribe to messaging center
             MessagingCenter.Subscribe<SettingsViewModel, Feed>(this, Constants.NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED, OnAddItemMessageRequested);
             MessagingCenter.Subscribe<SettingsViewModel>(this, Constants.NOTIFICATION_ID_FEED_ITEM_UPDATED, OnFeedUpdatedRequested);
-            MessagingCenter.Subscribe<FRNavigationPage>(this, Constants.NOTIFICATION_ID_SHOW_SETTINGS_PAGE, OnShowSettingsPageRequested);
+            MessagingCenter.Subscribe <Application>(this, Constants.NOTIFICATION_ID_SHOW_SETTINGS_PAGE, OnShowSettingsPageRequested);
         }
 
         #endregion
@@ -53,7 +53,7 @@ namespace frettir.Views
         /// Shows the settings page.
         /// </summary>
         /// <param name="sender">Sender.</param>
-        void OnShowSettingsPageRequested(FRNavigationPage sender)
+        public void OnShowSettingsPageRequested(Application sender)
         {
             Navigation.PushModalAsync(new SettingsPage());
         }
@@ -90,9 +90,14 @@ namespace frettir.Views
         /// </summary>
         void AddEmptyPage()
         {
-            var navigationPage = new MaterialNavigationPage(new EmptyPage())
+            var contentPage = new EmptyPage
             {
-                Title = "Help"
+                Title = "Welcome"
+            };
+
+            var navigationPage = new FRNavigationPage(contentPage)
+            {
+                Title = "Welcome"
             };
 
             if (Device.RuntimePlatform == Device.iOS)

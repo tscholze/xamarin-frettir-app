@@ -52,7 +52,7 @@ namespace frettir.Controls
         /// </summary>
         void ShowSettingsPage()
         {
-            MessagingCenter.Send(this, Constants.NOTIFICATION_ID_SHOW_SETTINGS_PAGE);
+            MessagingCenter.Send(Application.Current, Constants.NOTIFICATION_ID_SHOW_SETTINGS_PAGE);
         }
 
         #endregion

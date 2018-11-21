@@ -4,53 +4,67 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
     x:Class="frettir.Views.SettingsPage"
-    Title="{Binding Title}">
+    Title="{Binding Title}"
+    BackgroundColor="#F2F2F2">
     <ContentPage.Content>
-        <StackLayout
-            Padding="0, 80, 0, 0"
-            BackgroundColor="White">
+        <Grid
+            Margin="0,80,0, 80">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="*" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
             <material:MaterialButton
+                Grid.Row="0"
                 ButtonType="Text"
                 Text="Close"
                 Command="{Binding ClosePageCommand}"
                 HorizontalOptions="End" />
-            <material:MaterialCard
-                CornerRadius="2"
-                Elevation="1"
-                HorizontalOptions="FillAndExpand"
-                Margin="10">
-                <StackLayout>
-                    <Label
-                        Text="Add feed"
-                        Style="{DynamicResource  Material.TypeScale.H6}" />
-                    <material:MaterialTextField
-                        x:Name="UrlEntry"
-                        Placeholder="Feed url"
-                        HelperText="E.g.: https://example.org/feed"
-                        BackgroundColor="Transparent"
-                        AlwaysShowUnderline="true" />
-                    <material:MaterialButton
-                        Text="Add"
-                        Command="{Binding AddNewFeedCommand}"
-                        CommandParameter="{Binding Source={x:Reference UrlEntry}, Path=Text}" />
-                </StackLayout>
-            </material:MaterialCard>
-            <material:MaterialCard
-                CornerRadius="2"
-                Elevation="1"
-                HorizontalOptions="FillAndExpand"
-                Margin="10">
-                <StackLayout>
-                    <Label
-                        Text="Other Actions"
-                        Style="{DynamicResource  Material.TypeScale.H6}" />
-                    <material:MaterialButton
-                        Text="Go to Github" />
-                    <material:MaterialButton
-                        Text="Remove all feeds"
-                        BackgroundColor="Red" />
-                </StackLayout>
-            </material:MaterialCard>
-        </StackLayout>
+            <StackLayout
+                Grid.Row="2">
+                <material:MaterialCard
+                    CornerRadius="2"
+                    Elevation="1"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="10">
+                    <StackLayout>
+                        <Label
+                            Text="Add feed"
+                            Style="{DynamicResource  Material.TypeScale.H6}" />
+                        <material:MaterialTextField
+                            x:Name="UrlEntry"
+                            Placeholder="Feed url"
+                            HelperText="E.g.: https://example.org/feed"
+                            BackgroundColor="Transparent"
+                            AlwaysShowUnderline="true" />
+                        <material:MaterialButton
+                            Text="Add"
+                            Command="{Binding AddNewFeedCommand}"
+                            CommandParameter="{Binding Source={x:Reference UrlEntry}, Path=Text}" />
+                    </StackLayout>
+                </material:MaterialCard>
+                <material:MaterialCard
+                    CornerRadius="2"
+                    Elevation="1"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="10">
+                    <StackLayout>
+                        <Label
+                            Text="Other Actions"
+                            Style="{DynamicResource  Material.TypeScale.H6}" />
+                        <material:MaterialButton
+                            Text="Go to Github"
+                            Command="{Binding GoToRepositoryCommand}" />
+                        <material:MaterialButton
+                            Text="Remove all feeds"
+                            BackgroundColor="Red"
+                            Command="{Binding RemoveAllFeedsCommand}" />
+                    </StackLayout>
+                </material:MaterialCard>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

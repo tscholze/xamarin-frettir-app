@@ -3,6 +3,7 @@ using frettir.Utils;
 using frettir.Services;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace frettir.ViewModels
 {
@@ -26,6 +27,7 @@ namespace frettir.ViewModels
         {
             AddNewFeedCommand = new Command<string>(AddNewFeed);
             GoToRepositoryCommand = new Command(GoToRepository);
+            RemoveAllFeedsCommand = new Command(RemoveAllFeedsAsync);
             ClosePageCommand = new Command(ClosePage);
         }
 
@@ -67,18 +69,33 @@ namespace frettir.ViewModels
         async void GoToRepository()
         {
             await Browser.OpenAsync(Constants.URI_REPOSITORY, BrowserLaunchMode.SystemPreferred);
+
+            // Close page after command was executed.
+            ClosePage();
         }
 
         /// <summary>
         /// Triggeres the removing of all stored feeds.
         /// </summary>
-        void RemoveAllFeeds()
+        async void RemoveAllFeedsAsync()
         {
+            // Confirm user's choice.
+            var confirmed = await MaterialDialog.Instance.ConfirmAsync(message: "Are you sure?",
+                                    title: "Confirm",
+                                    confirmingText: "Delete",
+                                    dismissiveText: "No");
+
+            if (confirmed == false)
+                return;
+
             // Remove all feeds from storage.
             FeedPreferenceService.RemoveAll();
 
             // Raise notifications that feed(s) has been updated aka. removed.
             MessagingCenter.Send(this, Constants.NOTIFICATION_ID_FEED_ITEM_UPDATED);
+
+            // Close page after command was executed.
+            ClosePage();
         }
 
         /// <summary>

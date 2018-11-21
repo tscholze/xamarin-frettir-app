@@ -2,20 +2,20 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
     x:Class="frettir.Views.EmptyPage">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="Auto" />
-                <RowDefinition
-                    Height="*" />
-            </Grid.RowDefinitions>
+        <StackLayout
+            VerticalOptions="Center"
+            Margin="30,0,30,0">
             <Label
-                Grid.Row="1"
-                Style="{DynamicResource  Material.TypeScale.Body1}"
+                Style="{DynamicResource Material.TypeScale.Body1}"
+                TextColor="#c0c0c0"
                 HorizontalTextAlignment="Center"
-                Text="You did not add any feed yet, tap on the cog and get started!" />
-        </Grid>
+                Text="You did not add any feed yet. Please open app settings to get started!" />
+            <material:MaterialButton
+                Text="Open settings"
+                Command="{Binding ShowSettingsPageCommand}" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

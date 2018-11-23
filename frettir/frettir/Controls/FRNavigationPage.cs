@@ -29,6 +29,13 @@ namespace frettir.Controls
             SetupToolbarItems();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            XF.Material.Forms.Material.PlatformConfiguration.ChangeStatusBarColor(Color.Green);
+        }
+
         #endregion
 
         #region Private helper

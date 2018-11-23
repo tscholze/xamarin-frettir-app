@@ -29,13 +29,6 @@ namespace frettir.Views
 
         #region Event handler
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            XF.Material.Forms.Material.PlatformConfiguration.ChangeStatusBarColor(Color.Red);
-        }
-
         /// <summary>
         /// Called on a feed item was added succesful.
         /// </summary>

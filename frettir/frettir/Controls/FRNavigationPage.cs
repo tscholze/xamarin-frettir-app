@@ -29,16 +29,30 @@ namespace frettir.Controls
             SetupToolbarItems();
         }
 
+        #endregion
+
+        #region Event handler
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            XF.Material.Forms.Material.PlatformConfiguration.ChangeStatusBarColor(Color.Green);
+            SetupAppereance();
         }
 
         #endregion
 
         #region Private helper
+
+        /// <summary>
+        /// Setups the custom appereance.
+        /// </summary>
+        private void SetupAppereance()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                XF.Material.Forms.Material.PlatformConfiguration.ChangeStatusBarColor(XF.Material.Forms.Material.Color.Primary);
+            }
+        }
 
         /// <summary>
         /// Setups the always visisble but customized toolbar items.

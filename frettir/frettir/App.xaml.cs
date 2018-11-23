@@ -13,9 +13,7 @@ namespace frettir
         public App()
         {
             InitializeComponent();
-
             XF.Material.Forms.Material.Init(this, "Material.Configuration");
-            XF.Material.Forms.Material.PlatformConfiguration.ChangeStatusBarColor(Color.Red);
 
             MainPage = new MainPage();
         }

@@ -25,8 +25,6 @@ namespace frettir.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             XF.Material.iOS.Material.Init();
-            XF.Material.Forms.Material.PlatformConfiguration.ChangeStatusBarColor(Color.Red);
-
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -8,7 +8,7 @@ namespace frettir.Utils
         /// <summary>
         /// Max length of a shortend feed title.
         /// </summary>
-        public static int SHORTEND_FEED_TITLE_LENGTH = 10;
+        public readonly static int SHORTEND_FEED_TITLE_LENGTH = 10;
 
         #endregion
 
@@ -17,22 +17,22 @@ namespace frettir.Utils
         /// <summary>
         /// The notification identifier for adding a new feed item failed.
         /// </summary>
-        public static string NOTIFICATION_ID_FEED_ITEM_ADD_FAILED = "NOTIFICATION_ID_FEED_ITEM_ADD_FAILED";
+        public readonly static string NOTIFICATION_ID_FEED_ITEM_ADD_FAILED = "NOTIFICATION_ID_FEED_ITEM_ADD_FAILED";
 
         /// <summary>
         /// The notification identifier for adding a new feed item was succeeded.
         /// </summary>
-        public static string NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED = "NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED";
+        public readonly static string NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED = "NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED";
 
         /// <summary>
         /// The notification identifier that a feed item got updated.
         /// </summary>
-        public static string NOTIFICATION_ID_FEED_ITEM_UPDATED = "NOTIFICATION_ID_FEED_ITEM_UPDATED";
+        public readonly static string NOTIFICATION_ID_FEED_ITEM_UPDATED = "NOTIFICATION_ID_FEED_ITEM_UPDATED";
 
         /// <summary>
         /// The notification identifier that the settings page should be displayed.
         /// </summary>
-        public static string NOTIFICATION_ID_SHOW_SETTINGS_PAGE = "NOTIFICATION_ID_SHOW_SETTINGS_PAGE";
+        public readonly static string NOTIFICATION_ID_SHOW_SETTINGS_PAGE = "NOTIFICATION_ID_SHOW_SETTINGS_PAGE";
 
         #endregion
 
@@ -41,12 +41,12 @@ namespace frettir.Utils
         /// <summary>
         /// The system preference name for the feed list property.
         /// </summary>
-        public static string PREFERENCE_NAME_FILE_FEED = "PREFERENCE_NAME_FILE_FEED";
+        public readonly static string PREFERENCE_NAME_FILE_FEED = "PREFERENCE_NAME_FILE_FEED";
 
         /// <summary>
         /// Preference list seperator.
         /// </summary>
-        public static string[] PREFERENCE_LIST_SEPERATOR = { "-----------" };
+        public readonly static string[] PREFERENCE_LIST_SEPERATOR = { "-----------" };
 
         #endregion
 
@@ -55,7 +55,7 @@ namespace frettir.Utils
         /// <summary>
         /// URI to the code repository of the app.
         /// </summary>
-        public static Uri URI_REPOSITORY = new Uri("https://google.de");
+        public readonly static Uri URI_REPOSITORY = new Uri("https://google.de");
 
         #endregion
     }

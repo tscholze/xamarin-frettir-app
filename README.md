@@ -4,8 +4,8 @@
 ## Status
 |Platform | Status|
 |---|---|
-|iOS| [![Build Status iOS](https://tscholze.visualstudio.com/Frettir/_apis/build/status/Frettir-Xamarin.iOS-CI)](https://tscholze.visualstudio.com/Frettir/_build/latest?definitionId=3)|
-|Android|[![Build Status Android](https://tscholze.visualstudio.com/Frettir/_apis/build/status/Frettir-Xamarin.Android-CI)](https://tscholze.visualstudio.com/Frettir/_build/latest?definitionId=2)|
+|iOS| [![Build Status](https://tscholze.visualstudio.com/Frettir/_apis/build/status/Frettir-Xamarin.iOS-CI)](https://tscholze.visualstudio.com/Frettir/_build/latest?definitionId=4)|
+|Android|[![Build Status](https://tscholze.visualstudio.com/Frettir/_apis/build/status/Frettir-Xamarin.Android-CI)](https://tscholze.visualstudio.com/Frettir/_build/latest?definitionId=5)|
 
 The solution is work in progress and not meant to be used from other persons than me. If you are looking for a perfect example to du something. Nope, that's not here.
 

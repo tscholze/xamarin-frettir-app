@@ -16,7 +16,7 @@ namespace frettir.Services
         /// <summary>
         /// The placeholder image URL.
         /// </summary>
-        private static readonly string _placeholderImageUrl = "https://dbudwm.files.wordpress.com/2018/03/bildschirmfoto-2018-03-26-um-20-34-43.png";
+        private static readonly string _placeholderImageUrl = "https://via.placeholder.com/150x80.png";
 
         #endregion
 

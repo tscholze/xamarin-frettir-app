@@ -24,9 +24,6 @@ namespace frettir.Views
 
             // Handle messages
             MessagingCenter.Subscribe<SettingsViewModel>(this, Constants.NOTIFICATION_ID_FEED_ITEM_ADD_SUCCEEDED, OnFailed);
-
-            // Dev helper
-            UrlEntry.Text = "https://dbudwm.wordpress.com/feed";
         }
 
         #endregion

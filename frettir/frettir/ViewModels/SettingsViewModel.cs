@@ -57,6 +57,9 @@ namespace frettir.ViewModels
         /// <param name="urlString">URL string.</param>
         void AddNewFeed(string urlString)
         {
+            // Lower the input.
+            urlString = urlString.ToLower();
+
             // Check for valid url.
             if (!UriHelper.IsValidUrl(urlString) == true)
             {

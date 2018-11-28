@@ -11,11 +11,20 @@
 
 ## Idea behind
 It is never to late to learn something new. 
-Thats why I want to learn Xamarin, XAML and C#. As a trick to stay focused during the learning nights, I like to create example projects that could be used as a 'trainings area'. 
+Thats why I want to learn Xamarin, XAML and C#. As a trick to stay focused during the learning nights, I like to create example projects that could be used as a 'trainings area'. I test primarily on iOS.
 
 ## Prerequirements
 - Visual Studio 2017 *or*
 - Visual Studio for Mac
+
+## Used packages
+- Xamarin.Forms ([Github](https://github.com/xamarin/Xamarin.Forms))
+- Xamarin.Essentials ([Github](https://github.com/xamarin/Essentials))
+- XF.Material ([Github](https://github.com/contrix09/XF-Material-Library))
+- Newtonsoft.Json ([Github](https://github.com/JamesNK/Newtonsoft.Json))
+
+(Sub packages are not listed.)
+
 
 ## Contributing
 

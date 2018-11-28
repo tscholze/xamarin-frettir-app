@@ -1,6 +1,10 @@
 ﻿using System;
+
 namespace frettir.Utils
 {
+    /// <summary>
+    /// Defines app-global constants.
+    /// </summary>
     public static class Constants
     {
         #region Min / Max Values

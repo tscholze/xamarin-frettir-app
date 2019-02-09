@@ -25,6 +25,10 @@ Thats why I want to learn Xamarin, XAML and C#. As a trick to stay focused durin
 
 (Sub packages are not listed.)
 
+## How it looks
+
+
+
 
 ## Contributing
 
